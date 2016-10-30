@@ -5,8 +5,7 @@
     "sourceMap": false
   },
   "files" :[
-    "app",
-    "typings/index"
+    "server/app"
   ],
   "exclude": [
     "node_modules"

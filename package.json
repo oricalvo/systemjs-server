@@ -1,9 +1,8 @@
 {
   "name": "systemjs-server",
-  "version": "1.0.3",
-  "description": "A simple NodeJS server with systemjs-middleware which allows for simpler systemjs configuration",
-  "main": "app.js",
-  "scripts": {},
+  "version": "1.1.4",
+  "description": "A light express server which allows for simpler systemjs configuration",
+  "main": "server/app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oricalvo/systemjs-server.git"
@@ -15,13 +14,16 @@
   },
   "homepage": "https://github.com/oricalvo/systemjs-server#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "open": "0.0.5",
+    "systemjs": "^0.19.40"
   },
   "devDependencies": {
     "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.46"
   },
   "bin": {
-    "systemjs-server": "./bin/index.js"
+    "sjs": "bin/sjs.js"
   }
 }
