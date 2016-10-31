@@ -1,0 +1,20 @@
+{
+  "name": "systemjs-server-sample-es5",
+  "version": "1.0.0",
+  "description": "A ES5 sample for using systemjs-server",
+  "main": "main.js",
+  "dependencies": {
+    "redux": "^3.6.0",
+    "systemjs": "^0.19.40",
+    "systemjs-server": "^1.1.4"
+  },
+  "devDependencies": {
+    "systemjs-server": "^1.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node postinstall.js"
+  },
+  "author": "Ori Calvo",
+  "license": "MIT"
+}
