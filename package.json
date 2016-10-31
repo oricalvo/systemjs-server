@@ -14,14 +14,19 @@
   },
   "homepage": "https://github.com/oricalvo/systemjs-server#readme",
   "dependencies": {
+    "@types/cheerio": "^0.17.31",
+    "cheerio": "^0.22.0",
+    "debug": "^2.2.0",
     "express": "^4.14.0",
     "open": "0.0.5",
     "systemjs": "^0.19.40"
   },
   "devDependencies": {
-    "typescript": "^2.0.3",
     "@types/core-js": "^0.9.34",
-    "@types/node": "^6.0.46"
+    "@types/express": "^4.0.33",
+    "@types/node": "^6.0.46",
+    "@types/systemjs": "^0.19.31",
+    "typescript": "^2.0.3"
   },
   "bin": {
     "sjs": "bin/sjs.js"

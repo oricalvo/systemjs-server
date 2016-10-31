@@ -5,9 +5,13 @@
     "sourceMap": false
   },
   "files" :[
-    "server/app"
+    "server/app.ts",
+    "bin/sjs.ts",
+    "client/systemjs.server.ts",
+    "client/systemjs.middleware.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "samples"
   ]
 }
