@@ -1,4 +1,4 @@
-import {IResolver} from "../core/resolver";
+import {IResolver} from "./resolver";
 import {or} from "../helpers/promise";
 
 export class ResolverCollection implements IResolver {

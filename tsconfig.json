@@ -5,7 +5,7 @@
     "sourceMap": false
   },
   "files" :[
-    "server/app.ts",
+    "server/main.ts",
     "bin/sjs.ts",
     "client/systemjs.server.ts",
     "client/systemjs.middleware.ts"

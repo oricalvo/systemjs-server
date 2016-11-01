@@ -70,6 +70,7 @@
 
     function importMain(main) {
         if(!main) {
+            console.log();
             console.log("systemjs-server failed to detect main file to import. The following locations were considered:");
             console.log("    ~/main.ts");
             console.log("    ~/app/main.ts");

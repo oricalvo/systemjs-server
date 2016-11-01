@@ -1,6 +1,6 @@
 {
   "name": "systemjs-server",
-  "version": "1.1.4",
+  "version": "1.1.23",
   "description": "A light express server which allows for simpler systemjs configuration",
   "main": "server/app.js",
   "repository": {

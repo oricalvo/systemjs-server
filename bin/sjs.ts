@@ -1,34 +1,34 @@
 #!/usr/bin/env node
 
-import * as configurator from "../core/configurator";
-const open = require("open");
-import * as app from "../server/app";
-import {dirExists} from "../helpers/fs";
-const debug = require("debug");
-const log = debug("sjs:log");
-const error = debug("sjs:error");
+const fs = require("fs");
+const path = require("path");
+const cwd = process.cwd();
+const localMain = path.join(cwd, "node_modules/systemjs-server/server/main.js");
 
-validate()
-    .then(runServer)
-    .then(openBrowser)
-    .catch(err => {
-        error(err.message);
+fileExists(localMain).then(exists => {
+    if(exists) {
+        require(localMain);
+    }
+    else {
+        require("../server/main");
+    }
+});
+
+export function fileExists(filePath) {
+    return new Promise(function (resolve, reject) {
+        fs.stat(filePath, function (err, stats) {
+            if (err) {
+                if (err.code == "ENOENT") {
+                    resolve(false);
+                }
+                else {
+                    reject(err);
+                }
+            }
+            else {
+                resolve(stats.isFile());
+            }
+        });
     });
-
-function validate() {
-    return dirExists("node_modules/systemjs-server").then(exists => {
-        if (!exists) {
-            throw new Error("Local systemjs-server was not found. Please run 'npm install systemjs-server'");
-        }
-    });
 }
 
-function runServer() {
-    const config = app.configure();
-    app.run();
-}
-
-function openBrowser() {
-    const config = configurator.get();
-    open("http://localhost:" + config.port);
-}

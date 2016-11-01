@@ -1,4 +1,4 @@
-import {IResolver} from "../core/resolver";
+import {IResolver} from "./resolver";
 import {ResolverNpmPackage} from "./NpmPackage";
 import {logger} from "../core/logger";
 

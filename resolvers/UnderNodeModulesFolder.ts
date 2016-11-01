@@ -1,15 +1,15 @@
-import {IResolver} from "../core/resolver";
+import {IResolver} from "./resolver";
 import * as configurator from "../core/configurator";
-import {resolveWithExtensions} from "./helpers";
-
-const config = configurator.get();
+import {findFileWithExtensions} from "../helpers/fs";
 
 export class ResolverUnderNodeModulesFolder implements IResolver {
     get name() {
         return "underNodeModulesFolder";
     }
 
-    resolve(location: string) {
-        return resolveWithExtensions("node_modules/" + location, config.defaultExtensions);
+    resolve(relPath: string) {
+        const config = configurator.get();
+        const location = "node_modules/" + relPath;
+        return findFileWithExtensions(config.basePath, location, config.defaultExtensions);
     }
 }

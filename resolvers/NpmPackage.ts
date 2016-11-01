@@ -1,8 +1,7 @@
 import * as path from "path";
 import * as configurator from "../core/configurator";
-import {IResolver} from "../core/resolver";
-import {fileExists, readJson} from "../helpers/fs";
-import {resolveWithExtensions} from "./helpers";
+import {IResolver} from "./resolver";
+import {fileExists, readJson, findFileWithExtensions} from "../helpers/fs";
 import {logger} from "../core/logger";
 
 const config = configurator.get();
@@ -26,8 +25,8 @@ export class ResolverNpmPackage implements IResolver {
                     return "";
                 }
 
-                const relPath = "node_modules/" + packageName + "/" + json.main;
-                return resolveWithExtensions(relPath, ["", "js"]);
+                const location = "node_modules/" + packageName + "/" + json.main;
+                return findFileWithExtensions(config.basePath, location, ["", "js"]);
             });
         });
     }

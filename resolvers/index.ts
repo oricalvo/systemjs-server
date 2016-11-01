@@ -4,4 +4,4 @@ export {ResolverCollection} from "./ResolverCollection";
 export {ResolverSystemJSPlugin} from "./SystemJSPlugin";
 export {ResolverUnderNodeModulesFolder} from "./UnderNodeModulesFolder";
 export {ResolverUnderNpmPackageDistFolder} from "./UnderNpmPackageDistFolder";
-export {ResolverNull} from "../core/resolver";
+export {ResolverNull} from "./resolver";

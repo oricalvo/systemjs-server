@@ -1,9 +1,7 @@
-import {IResolver} from "../core/resolver";
+import {IResolver} from "./resolver";
 import * as configurator from "../core/configurator";
-import {resolveWithExtensions} from "./helpers";
 import {logger} from "../core/logger";
-
-const config = configurator.get();
+import {findFileWithExtensions} from "../helpers/fs";
 
 export class ResolverUnderNpmPackageDistFolder implements IResolver {
     get name() {
@@ -17,8 +15,9 @@ export class ResolverUnderNpmPackageDistFolder implements IResolver {
                 return Promise.resolve("");
             }
 
+            const config = configurator.get();
             const relPath = "node_modules/" + fileName + "/dist/" + fileName;
-            return resolveWithExtensions(relPath, config.defaultExtensions);
+            return findFileWithExtensions(config.basePath, relPath, config.defaultExtensions);
         });
     }
 }

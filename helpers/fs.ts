@@ -1,4 +1,7 @@
-const fs = require('fs');
+import {logger} from "../core/logger";
+import {or} from "./promise";
+import * as path from "path";
+import * as fs from "fs";
 
 export function fileExists(filePath) {
     return new Promise(function (resolve, reject) {
@@ -46,7 +49,7 @@ export function getFile(file) {
     });
 }
 
-export function findFirst(files) {
+export function findFirst(files): Promise<string> {
     return new Promise(function(resolve, reject) {
         let index = -1;
 
@@ -96,4 +99,39 @@ export function readFileContent(filePath): Promise<string> {
             resolve(content);
         });
     });
+}
+
+export function findFileWithExtensions(basePath: string, location: string, extensions: string[]) {
+    const funcs = [];
+
+    for(let ext of extensions) {
+        const locationWithExt = location + (ext ? ("." + ext) : "");
+        funcs.push(() => findFile(basePath, locationWithExt));
+    }
+
+    return or(funcs);
+}
+
+export function findFile(basePath: string, location: string) {
+    const fullPath = path.join(basePath, location);
+    logger.log("    Search: " + fullPath);
+
+    return fileExists(fullPath)
+        .then(exists => {
+            if (!exists) {
+                return "";
+            } else {
+                return location;
+            }
+        });
+}
+
+export function findFiles(basePath: string, locations: string[], extensions: string[]): Promise<string> {
+    const funcs = [];
+
+    for(let location of locations) {
+        funcs.push(() => findFileWithExtensions(basePath, location, extensions));
+    }
+
+    return or(funcs);
 }

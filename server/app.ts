@@ -4,29 +4,17 @@ import * as systemjsMiddleware from "./middleware";
 import * as configurator from "../core/configurator";
 import {logger} from "../core/logger";
 
-const config = configurator.get();
-
-export function configure(options?) {
-    Object.assign(config, options);
-
-    return config;
-}
-
 export function run() {
-    logger.log("systemjs-server");
-    logger.log("    basePath: " + config.basePath);
-    logger.log("    port: " + config.port);
+    configurator.reload().then(config => {
+        const app = express();
 
-    const app = express();
+        systemjsMiddleware.setup(app);
 
-    systemjsMiddleware.config({
-        basePath: config.basePath
-    });
-    systemjsMiddleware.setup(app);
+        app.use(express.static(config.basePath));
 
-    app.use(express.static(config.basePath));
-
-    app.listen(config.port, function () {
-        logger.log('Example app listening on port 3000!');
+        app.listen(config.port, function () {
+            logger.log('systemjs-server is running on port ' + config.port);
+            logger.log("");
+        });
     });
 }
