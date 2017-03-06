@@ -1,5 +1,5 @@
 import * as configurator from "../core/configurator";
-const open = require("open");
+import * as open2 from "open";
 import * as app from "../server/app";
 import {dirExists} from "../helpers/fs";
 import {logger} from "../core/logger";
@@ -25,5 +25,5 @@ function runServer() {
 
 function openBrowser() {
     const config = configurator.get();
-    open("http://localhost:" + config.port);
+    open2("http://localhost:" + config.port);
 }

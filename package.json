@@ -1,8 +1,12 @@
 {
   "name": "systemjs-server",
-  "version": "1.1.23",
+  "version": "1.1.69",
   "description": "A light express server which allows for simpler systemjs configuration",
   "main": "server/app.js",
+  "scripts": {
+    "pack": "bu pack",
+    "patch": "bu patch"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oricalvo/systemjs-server.git"
@@ -22,11 +26,11 @@
     "systemjs": "^0.19.40"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
     "@types/express": "^4.0.33",
     "@types/node": "^6.0.46",
     "@types/systemjs": "^0.19.31",
-    "typescript": "^2.0.3"
+    "build-utils": "^1.0.27",
+    "typescript": "^2.2.1"
   },
   "bin": {
     "sjs": "bin/sjs.js"

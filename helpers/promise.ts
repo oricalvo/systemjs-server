@@ -44,6 +44,6 @@ Promise.prototype["finally"] = function (callback) {
     );
 };
 
-interface Promise<T> {
-    finally(): Promise<T>;
-}
+// export interface Promise<T> {
+//     finally(): Promise<T>;
+// }

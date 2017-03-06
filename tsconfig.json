@@ -2,13 +2,15 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "sourceMap": false
+    "sourceMap": false,
+    "lib": ["dom", "es2015"]
   },
   "files" :[
     "server/main.ts",
     "bin/sjs.ts",
     "client/systemjs.server.ts",
-    "client/systemjs.middleware.ts"
+    "client/systemjs.middleware.ts",
+    "build/main.ts"
   ],
   "exclude": [
     "node_modules",
